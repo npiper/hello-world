@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>neilpiper.me</groupId>
 		<artifactId>parent.pom</artifactId>
-		<version>0.0.1_70.0f1b844</version>
+		<version>0.0.1_73.518ccdc</version>
 	</parent>
 	<groupId>neilpiper.me</groupId>
 	<artifactId>hello-world</artifactId>
