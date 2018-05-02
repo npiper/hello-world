@@ -9,7 +9,6 @@
 	<groupId>neilpiper.me</groupId>
 	<artifactId>hello-world</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>hello-world</name>
 	<description>Hello world test of parent pom - demo</description>
 	<packaging>jar</packaging>
 
@@ -23,4 +22,8 @@
 			<url>https://s3-ap-southeast-2.amazonaws.com/solveapuzzle-repo/release/</url>
 		</repository>
 	</repositories>
+	<name>hello-world</name>
+	<scm>
+		<developerConnection>scm:git:https://github.com/npiper/hello-world.git</developerConnection>
+	</scm>
 </project>
