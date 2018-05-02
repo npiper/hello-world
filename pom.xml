@@ -8,7 +8,7 @@
 	</parent>
 	<groupId>neilpiper.me</groupId>
 	<artifactId>hello-world</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1_${revision}</version>
 	<description>Hello world test of parent pom - demo</description>
 	<packaging>jar</packaging>
 
@@ -24,6 +24,7 @@
 	</repositories>
 	<name>hello-world</name>
 	<scm>
+		<url>https://github.com/npiper/hello-world</url>
 		<developerConnection>scm:git:https://github.com/npiper/hello-world.git</developerConnection>
 	</scm>
 </project>
