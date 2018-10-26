@@ -23,7 +23,7 @@ public class HelloWorld {
    * 
    */
   public void test() {
-    return;
+    logger.info("Executed test");
   }
 
 }

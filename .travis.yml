@@ -1,10 +1,22 @@
 language: java
-install: mvn install -DskipTests=true -Dcobertura.skip  -Dmaven.javadoc.skip=true
-  -B -V
-deploy:
-  provider: script
-  script: bash ./deploy.sh
-  skip_cleanup: true
+
+jdk: oraclejdk8
+
+branches:
+  except:
+    - /^[0-9]/
+
+before_script:
+- git config --global user.name "${GIT_USER_NAME}"
+- git config --global user.email "${GIT_USER_EMAIL}"
+- cp .travis.settings.xml $HOME/.m2/settings.xml
+
+script:
+- mvn clean install -Drevision=${TRAVIS_BUILD_NUMBER}.$(git rev-parse --short HEAD)
+
+after_success:
+- test $TRAVIS_BRANCH = "master" && test $TRAVIS_PULL_REQUEST = "false" && mvn site deploy scm:tag -Drevision=${TRAVIS_BUILD_NUMBER}.$(git rev-parse --short HEAD) -Dusername="${GIT_USER_NAME}" -Dpassword="${GITPW}"
+
 env:
   global:
   - secure: V0htpPwFAh58+LS7vL6SqLibFWyOYKKMpEXZEXbY/gXJFIv8zuG1F9z02lO9PbHpl8hiGe1xP6668g+GoopYhsZzLjrpLGQt5BJ0ZTJf3bQHueTgRhf7a9Nyclj2jqZ7t2UZz92Eczh+ohVzGE+ArSP3DCwSWi5x8mpKTMWFZmPm301U8GVLlPHI8EzAu0LN3AzD4KZs8BnvLwZ5vau3uRgRKXmyjOYMov/vgFIDD7UCZIaAejOSzENjgCAV+ccb9UsXFTu5oMVK25VB2cE34DaFTvrurw8VnTzmb5sTx9SzMA1z39K9BoXJ2EZ4PzjHJvgcqNJ7DJRnYcwEY2FtiYV1Nfby0SIqVMMsk2Qgpb9bnTpYN6xfhjyeMG7jGF6JdFu/AzcqSCRIGrYXQt+8QWbnE40MlrQls1YH3iAKVzg2VnonIBo1JYLHozFmM2U8eQaVyq95DIlBxXT2zNfYjKEHIKNgesaVwvYwG1qDK4xaWimte/ww9kbsPTuuW+CmVSI4YRZFXL9qx37JM3fcy7hnAHhl8VyJ4jporv71tsst2L0o2o8P4LopJU2moEjWo6HCbG6dVRQ1Btx3+c6IbHOR8hRBoOf2Lzlkut6tIkvQNe9rcy26vZ8E6Z63qvHlHxtK0isq/+uHQv596g2RuZVezTeRNwMl8VY3Ws/zBJ0=

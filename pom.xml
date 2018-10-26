@@ -4,9 +4,8 @@
 	<parent>
 		<groupId>neilpiper.me</groupId>
 		<artifactId>parent.pom</artifactId>
-		<version>0.0.1_73.518ccdc</version>
+		<version>0.0.1_134.1e56c2f</version>
 	</parent>
-	<groupId>neilpiper.me</groupId>
 	<artifactId>hello-world</artifactId>
 	<version>0.0.1_${revision}</version>
 	<description>Hello world test of parent pom - demo</description>
